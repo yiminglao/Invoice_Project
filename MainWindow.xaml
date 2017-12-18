@@ -1,0 +1,77 @@
+﻿<Window x:Class="CS3280_Group5_Project.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CS3280_Group5_Project"
+        mc:Ignorable="d"
+        Title="CS 3280 Group 5 Project" Height="515" Width="875" Style="{StaticResource InvoiceWindow}" WindowStartupLocation="CenterScreen" >
+    <Grid>
+        <Button x:Name="btnAddInvoice" Content="Add Invoice" HorizontalAlignment="Left" Margin="24,11,0,0" VerticalAlignment="Top" Height="32" FontSize="14" Width="96" FontWeight="Bold" Style="{DynamicResource InvoiceButton}" Click="btnAddInvoice_Click" />
+        <Button x:Name="btnDelInvoice" Content="Delete Invoice" HorizontalAlignment="Left" Margin="125,11,0,0" VerticalAlignment="Top" Width="108" Height="32" FontSize="14" FontWeight="Bold" Style="{DynamicResource InvoiceButton}" Click="btnDelInvoice_Click"/>
+        <Button x:Name="btnEditInvoice" Content="Edit Invoice" HorizontalAlignment="Left" Margin="238,11,0,0" VerticalAlignment="Top" Width="98" Height="32"  FontSize="14" FontWeight="Bold" Style="{DynamicResource InvoiceButton}" Click="btnEditInvoice_Click"/>
+        <Button x:Name="btnSearchInvoice" Content="Search for Invoice" HorizontalAlignment="Left" Margin="341,11,0,0" VerticalAlignment="Top" Width="138" Height="32" FontSize="14" FontWeight="Bold" Style="{DynamicResource InvoiceButton}" Click="btnSearchInvoice_Click"/>
+        <Button x:Name="btnUpdateItem" Content="Item Defs" HorizontalAlignment="Left" Margin="484,11,0,0" VerticalAlignment="Top" Height="32" FontSize="14" Width="109" FontWeight="Bold" Click="btnUpdateItem_Click" Style="{DynamicResource InvoiceButton}" />
+        <DataGrid x:Name="dgItem" HorizontalAlignment="Left" IsReadOnly="True" Style="{StaticResource InvoiceDataGrid}" Height="417" Margin="24,51,0,0" VerticalAlignment="Top" Width="569" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ItemCode}"  Header="Item Code" Width="1*"/>
+                <DataGridTextColumn Binding="{Binding Cost, StringFormat='$ 0.00'}" Header="Cost" Width="1*"/>
+                <DataGridTextColumn Binding="{Binding ItemDesc}"  Header="Item Desc" Width="4*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <GroupBox x:Name="gbInvoice" Header="Invoice" Margin="598,10,9.8,289.6" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1.2*"/>
+                </Grid.RowDefinitions>
+                <Label x:Name="lblInvoice" Content="Invoice Number:" Grid.Row="0" />
+                <Label x:Name="lblInvoiceNum"  ContentStringFormat="Inv- 0000" Grid.Row="1" />
+                <Label x:Name="lblInvoiceDate" Content="Invoice Date:" Grid.Row="2" />
+                <DatePicker x:Name="dpInvoiceDate" Grid.Row="3" Grid.ColumnSpan="2"/>
+                <Button x:Name="btnSaveInvoice" Content="Save Invoice" Grid.Row="4" Click="btnSaveInvoice_Click" Margin="5"/>
+                <Button x:Name="btnCancelInvoice" Content="Cancel Invoice" Grid.Row="4" Grid.Column="1"  Margin="5" Click="btnCancelInvoice_Click"   />
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="gbItem" Header="Add Item" HorizontalAlignment="Left" Height="268" Margin="598,201,0,0" VerticalAlignment="Top" Width="262">
+            <Grid Margin="0,10,-0.2,-0.2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="124.8"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1.2*"/>
+
+                </Grid.RowDefinitions>
+                <Label x:Name="lblSelectItem" Content="Select Item" Grid.Row="0" />
+                <ComboBox x:Name="cbItem" Grid.Row="1" Grid.ColumnSpan="2" SelectionChanged="cbItem_SelectionChanged" />
+
+                <Label x:Name="lblItemPrice" Content="Item Price: " Grid.Row="2" HorizontalAlignment="Center" />
+                <Label x:Name="lblMoney" Grid.Row="2" Grid.Column="1" ContentStringFormat="$ 0.00" HorizontalAlignment="Center"/>
+
+                <Label x:Name="lblTotal" Content="Total:" Grid.Row="3"  HorizontalAlignment="Center"/>
+                <Label x:Name="lblPriceNum" ContentStringFormat="$ 0.00" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="57.2,37.2,0,37.4" Grid.RowSpan="3" />
+
+                <Button x:Name="btnAddItem" Content="Add Item"  Margin="4" Grid.Row="4" Style="{DynamicResource InvoiceButton}" Click="btnAddItem_Click"/>
+                <Button x:Name="btnDelItem" Content="Delete Item" Margin="4" Grid.Row="4" Grid.Column="1" Style="{DynamicResource InvoiceButton}" Click="btnDelItem_Click"/>
+                <Button x:Name="btnSaveItem" Content="Save" Margin="4" Grid.Row="5" Grid.ColumnSpan="2" Style="{DynamicResource InvoiceCancelButton}" Click="btnSaveItem_Click" />
+
+            </Grid>
+        </GroupBox>
+
+
+    </Grid>
+</Window>
